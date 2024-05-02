@@ -15,7 +15,17 @@ const Products: FC = () => {
         <div>
             {
                 products
-                    .map(({id,title, description, price, discountPercentage, rating, stock, brand, category, thumbnail, images}: IProductProps) => (<Product key={id} id={id} title={title} description={description} price={price} discountPercentage={discountPercentage} rating={rating} stock={stock} brand={brand} category={category} thumbnail={thumbnail} images={images}/>))
+                    .map(({id,title, description, price, discountPercentage, rating, stock, brand, category, thumbnail,
+                              images}: IProductProps) => (<Product key={id}
+                                                                   id={id}
+                                                                   title={title}
+                                                                   description={description} price={price}
+                                                                   discountPercentage={discountPercentage}
+                                                                   rating={rating} stock={stock}
+                                                                   brand={brand}
+                                                                   category={category}
+                                                                   thumbnail={thumbnail}
+                                                                   images={images}/>))
             }
         </div>
     );
