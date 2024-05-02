@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import UsersComponent from "./components/UsersComponent";
+import PostsComponent from "./components/PostsComponent";
+import {getAllPostsOfSingleUser} from "./servises/jps.api.services";
+import {IPostModel} from "./models/IPostModel";
+import {IPostsModel} from "./models/IPostsModel";
+
 
 function App() {
+    const [posts, setPosts] = useState<IPostModel[]>([])
+    const lift = (userId:number) =>{
+        getAllPostsOfSingleUser(userId).then(({data}) => {
+            setPosts(data.posts)
+        })
+    }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={'App'}>
+        <div className={'users'}><UsersComponent lift={lift}/></div>
+        <div className={'posts'}><PostsComponent posts={posts}/></div>
     </div>
   );
 }
