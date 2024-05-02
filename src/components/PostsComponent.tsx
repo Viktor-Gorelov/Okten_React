@@ -8,7 +8,13 @@ const PostsComponent:FC<IProps> = ({posts}) => {
         <div>
             {
                 posts.map((posts:IPostModel) => (
-                    <li key={posts.id}>{posts.body} <br/></li>
+                    <p key={posts.id}>
+                        Title: {posts.title} <br/>
+                        Description: {posts.body} <br/>
+                        Reactions: {posts.reactions} <br/>
+                        Tag: {posts.tags.toString()}
+                        <hr/>
+                    </p>
                 ))
             }
         </div>

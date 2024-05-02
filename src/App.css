@@ -1,5 +1,6 @@
 .App {
   display: flex;
+  margin: 5px;
   .users{
     width: 50%;
   }
