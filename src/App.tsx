@@ -1,24 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
-function App() {
+interface IState{
+    value: boolean;
+}
+const App = () =>{
+    let value:string = 'false';
+ const [toggle, setToggle] = useState<IState>({value:true});
+ const [previous, setPrevious] = useState<IState>({value:true});
+  const switching = () => {
+      if(toggle.value){
+          setToggle({value: false});
+          value = 'false';
+          console.log(toggle.value);
+      }
+      else {
+          setToggle({value: true});
+          value = 'true';
+          console.log(toggle.value);
+      }
+  };
+  const showPreviousValue = () =>{
+      if(toggle.value){
+          setPrevious({value: false});
+      }
+      else{
+          setPrevious({value: true});
+      }
+  }
+  const save = () =>{
+      localStorage.setItem("Variable_Value", (toggle.value).toString());
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>{(toggle.value).toString()}</h2>
+      <button onClick={switching}>Switch Value</button>
+        <h2>Previous Value: {(previous.value).toString()}</h2>
+      <button onClick={showPreviousValue}>Previous Value</button>
+      <button onClick={save}>Save Value to Storage</button>
     </div>
   );
 }
