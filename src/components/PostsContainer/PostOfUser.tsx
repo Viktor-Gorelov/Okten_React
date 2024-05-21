@@ -9,7 +9,8 @@ const PostOfUser:FC<IProps> = ({post}) => {
         <div>
             {
                 <div>
-                <div>userId: {post.userId}</div>
+                    <h2>Post {post.id}</h2>
+                <div>postId: {post.userId}</div>
                 <div>id: {post.id}</div>
                 <div>title: {post.title}</div>
                 <div>body: {post.body}</div>

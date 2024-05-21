@@ -9,7 +9,8 @@ const CommentOfUser:FC<IProps> = ({comment}) => {
         <div>
             {
                 <div>
-                    <div>userId: {comment.postId}</div>
+                    <h2>Comment {comment.id}</h2>
+                    <div>postId: {comment.postId}</div>
                     <div>id: {comment.id}</div>
                     <div>email: {comment.email}</div>
                     <div>name: {comment.name}</div>

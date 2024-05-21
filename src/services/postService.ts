@@ -6,7 +6,7 @@ import {AxiosResponse} from "axios";
 import {IComment} from "../interfaces/commentInterface";
 
 const postService = {
-    getAll: ():IRes<IPost[]> => apiServices.get(urls.comments),
+    getAll: ():IRes<IPost[]> => apiServices.get(urls.posts),
     getCommentsOfPost: (postId:string): Promise<AxiosResponse<IComment[]>> => {
         return apiServices.get(`posts/${postId}/comments`);
     }
