@@ -1,5 +1,6 @@
 import {FC, PropsWithChildren} from "react";
 import {IUser} from "../../interfaces/userInterface";
+import {Link} from "react-router-dom";
 
 interface IProps extends PropsWithChildren{
     user: IUser;
@@ -10,7 +11,7 @@ const User:FC<IProps> = ({user}) => {
     return (
         <div>
             <div>id: {id}</div>
-            <div>name: {name}</div>
+            <div>name: <Link to={user.id.toString()}> {name}</Link></div>
             <div>username: {username}</div>
             <div>email: {email}</div>
             <div>street: {address.street}</div>
