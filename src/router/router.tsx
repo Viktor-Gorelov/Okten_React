@@ -12,6 +12,5 @@ export const routerConfig = createBrowserRouter([
                 {index:true,element:<AuthPage/>},
                 {path:'cars', element: <CarsPage/>}
             ]
-        }
-    ]
-)
+        },
+    ])

@@ -1,12 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {carService} from '../services/api.service'
+import {ICarWithAuth} from "../models/ICarWithAuth";
+import {Car} from "../components/CarComponent";
 
 const CarsPage = () => {
+    const [cars, setCars] = useState<ICarWithAuth[]>([])
     useEffect(() => {
-        carService.getCar()
+        // @ts-ignore
+        carService.getCars().then((value) => setCars(value?.items))
     }, []);
     return (
         <div>
-            CarsPage
+            {cars.map(car => <Car key={car.id} car={car}/>)}
         </div>
     );
 };
