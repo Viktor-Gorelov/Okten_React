@@ -6,8 +6,7 @@ import {Car} from "../components/CarComponent";
 const CarsPage = () => {
     const [cars, setCars] = useState<ICarWithAuth[]>([])
     useEffect(() => {
-        // @ts-ignore
-        carService.getCars().then((value) => setCars(value?.items))
+        carService.getCars().then((value) => {value?.items ? setCars(value.items): []})
     }, []);
     return (
         <div>

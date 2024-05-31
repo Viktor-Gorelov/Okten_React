@@ -1,4 +1,4 @@
-import axios, {AxiosError} from "axios";
+import axios, {AxiosError, AxiosResponse} from "axios";
 import {AuthDataModel} from "../models/AuthDataModel";
 import {ITokenObtainPair} from "../models/ITokenObtainPair";
 import {retriveLocalStorageData} from "./helpers/helpers";
@@ -40,7 +40,7 @@ const authService = {
 }
 
 const carService={
-    getCars: async () =>{
+    getCars: async (): Promise<ICarPaginatedModel | undefined> =>{
         try {
             const response = await axiosInstance.get<ICarPaginatedModel>('/cars');
             return response.data;
