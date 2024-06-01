@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {carService} from '../services/api.service'
 import {ICarWithAuth} from "../models/ICarWithAuth";
 import {Car} from "../components/CarComponent";
-import {IPaginatedPageModel} from "../models/IPaginatedPageModel";
 import {ICarPaginatedModel} from "../models/ICarPaginatedModel";
 import PaginationComponent from "../components/PaginationComponent";
 import {useSearchParams} from "react-router-dom";
@@ -35,17 +34,6 @@ const CarsPage = () => {
             });
         }
     }, [isAuthenticated, query]);
-
-    const changePage = (action:string)=>{
-        switch (action){
-            case 'prev':
-                setQuery({...carsPaginatedObject.prev});
-                break;
-            case 'next':
-                setQuery({...carsPaginatedObject.next});
-                break;
-        }
-    }
     return (
         <div>
             {cars.length > 0 ? (
@@ -53,7 +41,7 @@ const CarsPage = () => {
             ) : (
                 <div>User is not Authenticated</div>
             )}
-            <div><PaginationComponent changePage={changePage} prev={carsPaginatedObject.prev}
+            <div><PaginationComponent setQuery={setQuery} carsPaginatedObject={carsPaginatedObject} prev={carsPaginatedObject.prev}
                                       next={carsPaginatedObject.next}/></div>
         </div>
     );

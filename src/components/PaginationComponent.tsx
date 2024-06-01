@@ -1,12 +1,27 @@
 import React, {FC} from 'react';
 import {IPaginatedPageModel} from "../models/IPaginatedPageModel";
+import {SetURLSearchParams} from "react-router-dom";
+import {ICarPaginatedModel} from "../models/ICarPaginatedModel";
 
 interface IProps{
-    changePage:(action:string) => void;
+    setQuery:SetURLSearchParams;
+    carsPaginatedObject: ICarPaginatedModel;
     next: IPaginatedPageModel | null;
     prev: IPaginatedPageModel | null;
 }
-const PaginationComponent:FC<IProps> = ({changePage, prev,next}) => {
+const PaginationComponent:FC<IProps> = ({carsPaginatedObject, setQuery,prev,next}) => {
+
+    const changePage = (action:string)=>{
+        switch (action){
+            case 'prev':
+                setQuery({...carsPaginatedObject.prev});
+                break;
+            case 'next':
+                setQuery({...carsPaginatedObject.next});
+                break;
+        }
+    }
+
     return (
         <div>
             <button onClick={() =>{
