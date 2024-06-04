@@ -1,24 +1,35 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Outlet} from "react-router-dom";
+import HeaderComponent from "./components/HeaderComponent";
+import {postService, userService} from "./services/api.services";
+import {Context, defaultValue} from './context/ContextProvider';
+import {IUserModel} from "./models/IUserModel";
+import {IPostModel} from "./models/IPostModel";
 
-function App() {
+const App = () => {
+
+    const [users, setUsers] = useState<IUserModel[]>([]);
+    const [posts, setPosts] = useState<IPostModel[]>([]);
+
+    useEffect(() => {
+        userService.getUsers().then(value => setUsers(value.data));
+        postService.getPosts().then(value => setPosts(value.data));
+    }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <HeaderComponent/>
+        <Context.Provider value={{
+            userStore:{
+                allUsers:users
+            },
+            postStore:{
+                allPosts:posts
+            }
+        }}>
+      <Outlet/>
+            </Context.Provider>
     </div>
   );
 }
