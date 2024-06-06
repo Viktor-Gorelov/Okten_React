@@ -5,7 +5,8 @@ import {ICommentModel} from "../models/ICommentModel";
 
 type StoreType = {
     userStore:{
-        allUsers:IUserModel[]
+        allUsers:IUserModel[],
+        setFavoriteUser: (obj:IUserModel) => void,
     },
     postStore:{
         allPosts:IPostModel[]
@@ -16,7 +17,8 @@ type StoreType = {
 }
 export const defaultValue:StoreType = {
     userStore:{
-        allUsers:[]
+        allUsers:[],
+        setFavoriteUser:()=>{},
     },
     postStore:{
         allPosts:[]
