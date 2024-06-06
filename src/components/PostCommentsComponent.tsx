@@ -1,9 +1,9 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import {useContextProvider} from "../context/ContextProvider";
 import {PostWithCommentsType} from "../models/PostWithCommentsType";
+import {useStore} from "../context/ContextProvider";
 
 const PostCommentsComponent = () => {
-    const{postStore:{allPosts}, commentStore:{allComments}} = useContextProvider();
+    const{postStore:{allPosts}, commentStore:{allComments}} = useStore();
     const [postsWithCommentsState, setPostsWithCommentsState] = useState<PostWithCommentsType[]>([]);
 
     const postWithCommentsArray = useMemo(() =>{
