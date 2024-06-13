@@ -1,7 +1,7 @@
 import {IPost} from "../../model/IPost";
 import {createAsyncThunk, createSlice, isFulfilled, isRejected, PayloadAction} from "@reduxjs/toolkit";
-import {postService} from "../../services/api.service";
 import {AxiosError} from "axios";
+import {postService} from "../../services/postService";
 
 type PostSliceType ={
     posts:IPost[];
