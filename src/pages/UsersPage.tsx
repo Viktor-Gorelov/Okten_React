@@ -7,7 +7,7 @@ const UsersPage = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(userActions.loadUsers);
+        dispatch(userActions.loadUsers());
     }, []);
     return (
         <div>
