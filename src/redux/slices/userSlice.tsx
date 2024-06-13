@@ -34,7 +34,6 @@ const loadUsersById = createAsyncThunk(
     async (id:string | undefined,thunkAPI) => {
         if(id){
             try {
-
                 const user = await userService.getById(id);
                 return thunkAPI.fulfillWithValue(user);
 
